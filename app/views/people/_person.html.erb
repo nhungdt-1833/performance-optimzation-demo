@@ -1,0 +1,16 @@
+<ul>
+  <li>
+    Name: <%= person.name %>
+  </li>
+  <li>
+    Addresses:
+    <ul>
+      <% person.profiles.pluck(:address).each do |address| %>
+        <li><%= address %></li>
+      <% end %>
+    </ul>
+  </li>
+</ul>
+
+<%= "Vote count: #{person.votes_count}" %>
+<%= button_to "Vote", vote_person_path(person.id) %>
