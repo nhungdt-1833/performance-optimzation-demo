@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+1000.times do |time|
+  Person.create(name: Faker::Name.name)
+end
+
+persons = Person.pluck(:id)
+
+persons.each do |person|
+  Profile.create(address: Faker::Address.street_address, person_id: person)
+end
+
